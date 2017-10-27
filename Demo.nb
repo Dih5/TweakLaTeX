@@ -1,0 +1,163 @@
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<TweakLaTeX`\>\"", "]"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "ToLaTeX"}]], "Input"],
+
+Cell[BoxData[
+ StyleBox["\<\"Return a string representing a LaTeX expression tweaked the \
+way this package likes.\\nIt is also copied to clipboard.\"\>", 
+  "MSG"]], "Print", "PrintUsage",
+ CellTags->"Info-13e166d0-6257-47cc-bedd-85d6b31d36ec"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ToLaTeX", "[", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{
+    RowBox[{"Gamma", "[", 
+     RowBox[{"Exp", "[", 
+      RowBox[{"I", "*", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"x", "*", "y"}], "]"}]}], "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"x", ",", "0", ",", "x"}], "}"}]}], "]"}], "]"}]], "Input"],
+
+Cell[BoxData["\<\"\\\\int_0^x \\\\Gamma \\\\left(\\\\eu^{\\\\im \\\\sin (x \
+y)}\\\\right) \\\\, \\\\dif x\"\>"], "Output"]
+}, Open  ]],
+
+Cell["Use HoldForm to prevent evaluation", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Print", "[", 
+  RowBox[{"ToLaTeX", "[", 
+   RowBox[{"HoldForm", "[", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{
+      RowBox[{"Exp", "[", "x", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "]"}], "]"}], 
+  "]"}], "\n", 
+ RowBox[{"Print", "[", 
+  RowBox[{"ToLaTeX", "[", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{"Exp", "[", "x", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "]"}], 
+  "]"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"\\\\int_0^1 \\\\exp (x) \\\\, \\\\dif x\"\>"], "Print"],
+
+Cell[BoxData["\<\"\\\\eu-1\"\>"], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["You may want to use this convenience wrapper ", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "EvaluationToLaTeX"}]], "Input"],
+
+Cell[BoxData[
+ StyleBox["\<\"EvaluationToLaTeX[expr__, separator_: \\\" = \\\"] converts an \
+expresion and its evaluation to LaTeX.\\nIt is also copied to clipboard.\"\>",
+   "MSG"]], "Print", "PrintUsage",
+ CellTags->"Info-2de5ff3e-b3f6-43ab-bc04-806ab2f8f0d9"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"EvaluationToLaTeX", "[", 
+  RowBox[{"FourierTransform", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Exp", "[", 
+      RowBox[{"-", 
+       RowBox[{"t", "^", "2"}]}], "]"}], " ", 
+     RowBox[{"Sin", "[", "t", "]"}]}], ",", "t", ",", "\[Omega]"}], "]"}], 
+  "]"}]], "Input"],
+
+Cell[BoxData["\<\"\\\\mathcal{F}_t\\\\left[\\\\exp \\\\left(-t^2\\\\right) \\\
+\\sin{t}\\\\right](\\\\omega ) = \\\\frac{\\\\im \
+(\\\\sinh{\\\\omega}+\\\\cosh{\\\\omega}-1) \\\\left(\\\\cosh \
+\\\\left(\\\\frac{1}{4} (\\\\omega +1)^2\\\\right)-\\\\sinh \
+\\\\left(\\\\frac{1}{4} (\\\\omega +1)^2\\\\right)\\\\right)}{2 \
+\\\\sqrt{2}}\"\>"], "Output"]
+}, Open  ]],
+
+Cell["Make sure to include the needed headers in your document!", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["Headers"], "Input"],
+
+Cell[BoxData["\<\"\\\\usepackage{commath}\\n\\\\newcommand{\\\\eu}{\\\\mathrm{\
+e}}\\n\\\\newcommand{\\\\im}{\\\\mathrm{i}}\\n\"\>"], "Output"]
+}, Open  ]],
+
+Cell["WIP:", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"PreviewLaTeX", "[", 
+  RowBox[{"ToLaTeX", "[", 
+   RowBox[{"Integrate", "[", 
+    RowBox[{
+     RowBox[{"Exp", "[", "x", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"x", ",", "0", ",", "1"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input"],
+
+Cell[BoxData["\<\"\\\\documentclass[border=2pt]{standalone}\\n \
+\\\\usepackage{amsmath}\\n \\\\usepackage{varwidth}\\n \
+\\\\usepackage{commath}\\n\\\\newcommand{\\\\eu}{\\\\mathrm{e}}\\n\\\\\
+newcommand{\\\\im}{\\\\mathrm{i}}\\n\\n \\\\begin{document}\\n \
+\\\\begin{varwidth}{\\\\linewidth}\\n \\\\eu-1\\n \\\\end{varwidth}\\n \
+\\\\end{document}\"\>"], "Print"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Import", "::", "nffil"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"File not found during \[NoBreak]\\!\\(Import\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/Import/nffil\\\", \
+ButtonNote -> \\\"Import::nffil\\\"]\\)\"\>"}]], "Message", "MSG"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"DeleteDirectory", "::", "dirne"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Directory \[NoBreak]\\!\\(\\\"/tmp/m000001241921\\\"\\)\
+\[NoBreak] not empty. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/DeleteDirectory/dirne\\\", ButtonNote -> \
+\\\"DeleteDirectory::dirne\\\"]\\)\"\>"}]], "Message", "MSG"],
+
+Cell[BoxData["$Failed"], "Output"]
+}, Open  ]]
+},
+WindowSize->{1920, 1007},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.2 for Linux x86 (64-bit) (July 29, 2015)",
+StyleDefinitions->"Default.nb"
+]
+

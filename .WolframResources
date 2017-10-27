@@ -1,0 +1,8 @@
+Resources[
+    Version[1],
+    ExecutionBuildCommand["<<TweakLaTeX`"],
+    Paclet[
+        PacletFolder["TweakLaTeX"],
+        FunctionPaclet[False]
+    ]
+]
